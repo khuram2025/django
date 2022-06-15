@@ -19,8 +19,25 @@ class Category(models.Model):
         return self.name
 
 
+#Create City Model
+
+class City(models.Model):
+    name = models.CharField(max_length=255, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'cities'
+
+    def __str__(self):
+        return self.name
+
+
+
 #create Product Model
 class Product(models.Model):
+    # city = models.ForeignKey(City, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, related_name='product_creator', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, db_index=True)
@@ -40,6 +57,5 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
-
 
 
