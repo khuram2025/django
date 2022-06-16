@@ -803,7 +803,7 @@
                                 <ul>
                                     {% for c in categories %}
                                     <li>
-                                        <a href="shop-grid-right.html"> <img src="{% static '/assets/imgs/theme/icons/category-1.svg' %}" alt="" />{{c.name}}</a>
+                                        <a href="{{c.get_absolute_url}}"> <img src="{% static '/assets/imgs/theme/icons/category-1.svg' %}" alt="" />{{c.name}}</a>
                                     </li>
                                     {% endfor %}
                                  
@@ -1071,7 +1071,7 @@
                                 <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html">
+                                            <a href="{% url 'store:product_detail' product.slug %}">
                                                 {% if product.image %}
 
                                                 <img class="default-img" src="{{product.image.url}}" alt="" />
