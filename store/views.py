@@ -7,7 +7,7 @@ from .models import Product, Category
 # Create your views here.   
 def all_products(request):
     products = Product.objects.all()
-    return render(request, 'front/home.html', {'products': products})
+    return render(request, 'home.html', {'products': products})
 
 
 def categories(request):
