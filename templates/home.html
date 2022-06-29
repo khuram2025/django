@@ -137,6 +137,7 @@
       <!-- CTA Area 20 % discount banner-->
      
       <!-- Weekly Best Sellers-->
+      
       <div class="weekly-best-seller-area py-3">
         <div class="container">
           <div class="section-heading d-flex align-items-center justify-content-between dir-rtl">
@@ -145,80 +146,34 @@
           </div>
           <div class="row g-2">
             <!-- Weekly Product Card -->
+            {% for product in products %}
+
             <div class="col-12">
               <div class="horizontal-product-card">
                 <div class="d-flex align-items-center">
                   <div class="product-thumbnail-side">
-                    <!-- Thumbnail --><a class="product-thumbnail shadow-sm d-block" href="single-product.html"><img src="img/product/18.png" alt=""></a>
+                    <!-- Thumbnail --><a class="product-thumbnail shadow-sm d-block" href="single-product.html"><img src="{{product.image.url}}" alt=""></a>
                   </div>
                   <div class="product-description">
                     <!-- Wishlist  --><a class="wishlist-btn" href="#"><i class="fa-solid fa-heart"></i></a>
-                    <!-- Product Title --><a class="product-title d-block" href="single-product.html">Nescafe Coffee Jar</a>
+                    <!-- Product Title --><a class="product-title d-block" href="single-product.html">{{product.title}}</a>
                     <!-- Price -->
-                    <p class="sale-price"><i class="fa-solid fa-dollar-sign"></i>$64<span>$89</span></p>
-                    <!-- Rating -->
-                    <div class="product-rating"><i class="fa-solid fa-star"></i>4.88 <span class="ms-1">(39 review)</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Weekly Product Card -->
-            <div class="col-12">
-              <div class="horizontal-product-card">
-                <div class="d-flex align-items-center">
-                  <div class="product-thumbnail-side">
-                    <!-- Thumbnail --><a class="product-thumbnail shadow-sm d-block" href="single-product.html"><img src="img/product/7.png" alt=""></a>
-                  </div>
-                  <div class="product-description">
-                    <!-- Wishlist  --><a class="wishlist-btn" href="#"><i class="fa-solid fa-heart"></i></a>
-                    <!-- Product Title --><a class="product-title d-block" href="single-product.html">Modern Office Chair</a>
-                    <!-- Price -->
-                    <p class="sale-price"><i class="fa-solid fa-dollar-sign"></i>$99<span>$159</span></p>
+                    <p class="sale-price"><i class="fa-solid fa-dollar-sign"></i>Rs.{{product.price}}<span>
+                      {% if product.discount_price %}
+                      Rs.{{product.price}}</span></p>
+                      {%else%}
+                      {%endif%}
                     <!-- Rating -->
                     <div class="product-rating"><i class="fa-solid fa-star"></i>4.82 <span class="ms-1">(125 review)</span></div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Weekly Product Card -->
-            <div class="col-12">
-              <div class="horizontal-product-card">
-                <div class="d-flex align-items-center">
-                  <div class="product-thumbnail-side">
-                    <!-- Thumbnail --><a class="product-thumbnail shadow-sm d-block" href="single-product.html"><img src="img/product/12.png" alt=""></a>
-                  </div>
-                  <div class="product-description">
-                    <!-- Wishlist  --><a class="wishlist-btn" href="#"><i class="fa-solid fa-heart"></i></a>
-                    <!-- Product Title --><a class="product-title d-block" href="single-product.html">Beach Sunglasses</a>
-                    <!-- Price -->
-                    <p class="sale-price"><i class="fa-solid fa-dollar-sign"></i>$24<span>$32</span></p>
-                    <!-- Rating -->
-                    <div class="product-rating"><i class="fa-solid fa-star"></i>4.79 <span class="ms-1">(63 review)</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Weekly Product Card -->
-            <div class="col-12">
-              <div class="horizontal-product-card">
-                <div class="d-flex align-items-center">
-                  <div class="product-thumbnail-side">
-                    <!-- Thumbnail --><a class="product-thumbnail shadow-sm d-block" href="single-product.html"><img src="img/product/17.png" alt=""></a>
-                  </div>
-                  <div class="product-description">
-                    <!-- Wishlist  --><a class="wishlist-btn" href="#"><i class="fa-solid fa-heart"></i></a>
-                    <!-- Product Title --><a class="product-title d-block" href="single-product.html">Meow Mix Cat Food</a>
-                    <!-- Price -->
-                    <p class="sale-price"><i class="fa-solid fa-dollar-sign"></i>$11.49<span>$13</span></p>
-                    <!-- Rating -->
-                    <div class="product-rating"><i class="fa-solid fa-star"></i>4.78 <span class="ms-1">(7 review)</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {%endfor%}
           </div>
         </div>
       </div>
+
       <!-- Discount Coupon Card-->
     
       <!-- Featured Products Wrapper-->
