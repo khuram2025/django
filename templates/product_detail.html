@@ -1,5 +1,7 @@
 
 {% extends 'base.html' %}
+{% load embed_video_tags %}
+
 {% load static %}
 
 {%block content %}
@@ -16,7 +18,7 @@
     <div class="header-area" id="headerArea">
       <div class="container h-100 d-flex align-items-center justify-content-between rtl-flex-d-row-r">
         <!-- Back Button-->
-        <div class="back-button me-2"><a href="shop-grid.html"><i class="fa-solid fa-arrow-left-long"></i></a></div>
+        <div class="back-button me-2"><a href="{% url 'store:all_products' %}"><i class="fa-solid fa-arrow-left-long"></i></a></div>
         <!-- Page Title-->
         <div class="page-heading">
           <h6 class="mb-0">Product Details</h6>
@@ -84,8 +86,11 @@
           <div class="container d-flex justify-content-between rtl-flex-d-row-r">
             <div class="p-title-price">
               <h5 class="mb-1">{{product.title}}</h5>
+              
+              
               <p class="sale-price mb-0 lh-1">Rs.{{product.price}}<span>$41</span></p>
             </div>
+            
             <div class="p-wishlist-share"><a href="wishlist-grid.html"><i class="fa-solid fa-heart"></i></a></div>
           </div>
           <!-- Ratings-->
@@ -127,66 +132,18 @@
           <div class="container d-flex align-items-center justify-content-between">
             <!-- Choose Color-->
             <div class="choose-color-wrapper">
-              <p class="mb-1 font-weight-bold">Color</p>
-              <div class="choose-color-radio d-flex align-items-center">
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0">
-                  <input class="form-check-input blue" id="colorRadio1" type="radio" name="colorRadio" checked>
-                  <label class="form-check-label" for="colorRadio1"></label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0">
-                  <input class="form-check-input yellow" id="colorRadio2" type="radio" name="colorRadio">
-                  <label class="form-check-label" for="colorRadio2"></label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0">
-                  <input class="form-check-input green" id="colorRadio3" type="radio" name="colorRadio">
-                  <label class="form-check-label" for="colorRadio3"></label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0">
-                  <input class="form-check-input purple" id="colorRadio4" type="radio" name="colorRadio">
-                  <label class="form-check-label" for="colorRadio4"></label>
-                </div>
-              </div>
+              <h4 class="user-name mb-1 text-gray">{{ product.seller | title }}</h4>
             </div>
+          
             <!-- Choose Size-->
             <div class="choose-size-wrapper text-end">
-              <p class="mb-1 font-weight-bold">Size</p>
-              <div class="choose-size-radio d-flex align-items-center">
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0 me-2">
-                  <input class="form-check-input" id="sizeRadio1" type="radio" name="sizeRadio">
-                  <label class="form-check-label" for="sizeRadio1">S</label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0 me-2">
-                  <input class="form-check-input" id="sizeRadio2" type="radio" name="sizeRadio" checked>
-                  <label class="form-check-label" for="sizeRadio2">M</label>
-                </div>
-                <!-- Single Radio Input-->
-                <div class="form-check mb-0 me-2">
-                  <input class="form-check-input" id="sizeRadio3" type="radio" name="sizeRadio">
-                  <label class="form-check-label" for="sizeRadio3">L</label>
-                </div>
-              </div>
+              <p class="mb-1 font-weight-bold">Mobile Number:{{product.mobile_num}}</p>
+              
             </div>
           </div>
         </div>
         <!-- Add To Cart-->
-        <div class="cart-form-wrapper bg-white mb-3 py-3">
-          <div class="container">
-            <form class="cart-form" action="#" method="">
-              <div class="order-plus-minus d-flex align-items-center">
-                <div class="quantity-button-handler">-</div>
-                <input class="form-control cart-quantity-input" type="text" step="1" name="quantity" value="3">
-                <div class="quantity-button-handler">+</div>
-              </div>
-              <button class="btn btn-danger ms-3" type="submit">Add To Cart</button>
-            </form>
-          </div>
-        </div>
+        
         <!-- Product Specification-->
         <div class="p-specification bg-white mb-3 py-3">
           <div class="container">
@@ -201,18 +158,18 @@
             <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, eum? Id, culpa? At officia quisquam laudantium nisi mollitia nesciunt, qui porro asperiores cum voluptates placeat similique recusandae in facere quos vitae?</p>
           </div>
         </div>
+        
         <!-- Product Video -->
-        <div class="bg-img" style="background-image: url(img/product/18.jpg)">
-          <div class="container">
-            <div class="video-cta-content d-flex align-items-center justify-content-center">
-              <div class="video-text text-center">
-                <h4 class="mb-4">Summer Clothing</h4><a class="btn btn-info rounded-circle" id="videoButton" href="https://www.youtube.com/watch?v=lFGvqvPh5jI"><i class="fa-solid fa-play"></i></a>
-              </div>
-            </div>
+         <!-- Related Products Slides-->
+         <div class="related-product-wrapper bg-white py-3 mb-3">
+          <div class="container.center">
+           {%video product.video '400x240' %}
+           
           </div>
         </div>
+        
+      
         <div class="pb-3"></div>
-        <!-- Related Products Slides-->
         <div class="related-product-wrapper bg-white py-3 mb-3">
           <div class="container">
             <div class="section-heading d-flex align-items-center justify-content-between rtl-flex-d-row-r">
@@ -314,6 +271,7 @@
             </div>
           </div>
         </div>
+       
         <!-- Rating & Review Wrapper -->
         <div class="rating-and-review-wrapper bg-white py-3 mb-3 dir-rtl">
           <div class="container">
@@ -375,32 +333,9 @@
     <!-- Internet Connection Status-->
     <div class="internet-connection-status" id="internetStatus"></div>
     <!-- Footer Nav-->
-    <div class="footer-nav-area" id="footerNav">
-      <div class="suha-footer-nav">
-        <ul class="h-100 d-flex align-items-center justify-content-between ps-0 d-flex rtl-flex-d-row-r">
-          <li><a href="home.html"><i class="fa-solid fa-house"></i>Home</a></li>
-          <li><a href="message.html"><i class="fa-solid fa-comment-dots"></i>Chat</a></li>
-          <li><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i>Basket</a></li>
-          <li><a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a></li>
-          <li><a href="pages.html"><i class="fa-solid fa-heart"></i>Pages</a></li>
-        </ul>
-      </div>
-    </div>
+    {%include 'footer.html' %}
     <!-- All JavaScript Files-->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.passwordstrength.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/theme-switching.js"></script>
-    <script src="js/no-internet.js"></script>
-    <script src="js/active.js"></script>
-    <script src="js/pwa.js"></script>
+
   </body>
 
   {%endblock%}
