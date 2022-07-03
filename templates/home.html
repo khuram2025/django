@@ -152,11 +152,11 @@
               <div class="horizontal-product-card">
                 <div class="d-flex align-items-center">
                   <div class="product-thumbnail-side">
-                    <!-- Thumbnail --><a class="product-thumbnail shadow-sm d-block" href="single-product.html"><img src="{{product.image.url}}" alt=""></a>
+                    <!-- Thumbnail --><a class="product-thumbnail shadow-sm d-block" href="{{product.get_absolute_url}}"><img src="{{product.image.url}}" alt=""></a>
                   </div>
                   <div class="product-description">
                     <!-- Wishlist  --><a class="wishlist-btn" href="#"><i class="fa-solid fa-heart"></i></a>
-                    <!-- Product Title --><a class="product-title d-block" href="single-product.html">{{product.title}}</a>
+                    <!-- Product Title --><a class="product-title d-block" href="{{product.get_absolute_url}}">{{product.title}}</a>
                     <!-- Price -->
                     <p class="sale-price"><i class="fa-solid fa-dollar-sign"></i>Rs.{{product.price}}<span>
                       {% if product.discount_price %}
