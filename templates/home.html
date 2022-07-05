@@ -143,16 +143,22 @@
             <div class="col-12">
               <div class="horizontal-product-card">
                 <div class="d-flex align-items-center">
+                  {%for image in product.product_image.all %}
+                  {%if image.is_feature %}
+
                   <div class="product-thumbnail-side">
-                    <!-- Thumbnail --><a class="product-thumbnail shadow-sm d-block" href="{{product.get_absolute_url}}"><img src="{{product.image.url}}" alt=""></a>
+                    <!-- Thumbnail --><a class="product-thumbnail shadow-sm d-block" href="{{product.get_absolute_url}}"><img src="{{image.image.url}}" alt=""></a>
                   </div>
+                  {%endif%}
+                  {%endfor%}
+
                   <div class="product-description">
                     <!-- Wishlist  --><a class="wishlist-btn" href="#"><i class="fa-solid fa-heart"></i></a>
                     <!-- Product Title --><a class="product-title d-block" href="{{product.get_absolute_url}}">{{product.title}}</a>
                     <!-- Price -->
-                    <p class="sale-price"><i class="fa-solid fa-dollar-sign"></i>Rs.{{product.price}}<span>
+                    <p class="sale-price"><i class="fa-solid fa-dollar-sign"></i>Rs.{{product.discount_price}}<span>
                       {% if product.discount_price %}
-                      Rs.{{product.price}}</span></p>
+                      Rs.{{product.regular_price}}</span></p>
                       {%else%}
                       {%endif%}
                     <!-- Rating -->
