@@ -70,14 +70,20 @@
     <div class="page-content-wrapper">
       <div class="product-slide-wrapper">
         <!-- Product Slides-->
+        {%for image in product.product_image.all %}
+        {% if image.is_feature %}
         <div class="product-slides owl-carousel">
           <!-- Single Hero Slide-->
-          <div class="single-product-slide" style="background-image: url('{{product.image.url}}')"></div>
+          <div class="single-product-slide" style="background-image: url('{{image.image.url}}')"></div>
+          {%else%}
           <!-- Single Hero Slide-->
-          <div class="single-product-slide" style="background-image: url('img/bg-img/10.jpg')"></div>
+          <div class="single-product-slide" style="background-image: url('{{image.image.url}}')"></div>
           <!-- Single Hero Slide-->
-          <div class="single-product-slide" style="background-image: url('img/bg-img/11.jpg')"></div>
+          <div class="single-product-slide" style="background-image: url('{{image.image.url}})"></div>
         </div>
+        
+        {%endif%}
+        {%endfor%}
         <!-- Video Button--><a class="video-btn shadow-sm" id="singleProductVideoBtn" href="https://www.youtube.com/watch?v=lFGvqvPh5jI"><i class="fa-solid fa-play"></i></a>
       </div>
       <div class="product-description pb-3">
