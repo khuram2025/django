@@ -15,12 +15,14 @@ def categories(request):
         'categories': Category.objects.filter(parent=None)
     }
 
-def product_detail(request, slug):
-    product = get_object_or_404(Product, slug=slug)
-    return render(request, 'product_detail.html', {'product': product})
-
 def category_list(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
     products = Product.objects.all()
     return render(request, 'category_list.html', {'products': products, 'category': category})
+
+
+def product_detail(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    return render(request, 'product_detail.html', {'product': product})
+
 
