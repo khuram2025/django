@@ -1,6 +1,7 @@
 
 {% extends 'base.html' %}
 {% load embed_video_tags %}
+{% load social_share %}
 
 {% load static %}
 
@@ -181,22 +182,19 @@
             <!-- Product Specification-->
         <div class="p-specification bg-white mb-3 py-3">
           <div class="container">
-            <h6>Specifications</h6>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, eum? Id, culpa? At officia quisquam laudantium nisi mollitia nesciunt, qui porro asperiores cum voluptates placeat similique recusandae in facere quos vitae?</p>
-            <ul class="mb-3 ps-3">
-              <li><i class="fa-solid fa-check me-1"></i> 100% Good Reviews</li>
-              <li><i class="fa-solid fa-check me-1"></i> 7 Days Returns</li>
-              <li> <i class="fa-solid fa-check me-1"></i> Warranty not Aplicable</li>
-              <li> <i class="fa-solid fa-check me-1"></i> 100% Brand New Product</li>
-            </ul>
-            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, eum? Id, culpa? At officia quisquam laudantium nisi mollitia nesciunt, qui porro asperiores cum voluptates placeat similique recusandae in facere quos vitae?</p>
+            <h6>Details</h6>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+            {% post_to_facebook object_or_url "<p style='color: green;'>facebook</p>" %}
+          
           </div>
         </div>
         
+       
         <!-- Product Video -->
          <!-- Related Products Slides-->
          <div class="related-product-wrapper bg-white py-3 mb-3">
-          <div class="container.center">
+          <div class="container d-flex align-items-center justify-content-between">
            {%video product.video '400x240' %}
            
           </div>

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'store',
     'embed_video',
     'mptt',
+    'django_social_share',
 ]
 
 MIDDLEWARE = [
